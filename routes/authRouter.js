@@ -9,7 +9,7 @@ router.get('/sign-out', authController.signOutUser);
 router.put('/:id', authController.updatePassword);
 
 router.get('/sign-in', (req, res) => {
-  res.render('./auth/sign-in.ejs');
+  res.render('./auth/sign-in.ejs',  {wrongPass: false});
 });
 
 router.get('/sign-up', (req, res) => {
@@ -17,7 +17,11 @@ router.get('/sign-up', (req, res) => {
 });
 
 router.get('/:id/update-password', (req, res) => {
-  res.render('./auth/update-password.ejs', {user: {_id: req.params.id}});
+  res.render('./auth/update-password.ejs');
+})
+
+router.get('/auth/forget-password', (req, res) => {
+  res.render('./auth/forget-password')
 })
 
 module.exports = router;
