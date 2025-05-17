@@ -4,13 +4,11 @@ const User   = require('../models/user');
 const registerUser = async (req, res) => {
   try {
     const userInDb = await User.findOne({email: req.body.email})
-    if(userInDb)
-    {
+    if(userInDb) {
       return res.send('user already exists');
     }
 
-    if(req.body.password !== req.body.confirmPassword)
-    {
+    if(req.body.password !== req.body.confirmPassword) {
       return res.send('Password and Confirm Password must macth');
     }
     const hashedPassword = bcrypt.hashSync(req.body.password, 12);
@@ -29,6 +27,60 @@ const registerUser = async (req, res) => {
   }
 }
 
+const signInUser  = async (req, res) => {
+  try {
+    const user = await User.findOne({email: req.body.email})
+    if(!user) {
+      return res.send('No User Registerd with this email');
+    }
+
+    const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
+    if(!isValidPassword) {
+      res.send('Wrong password');
+    }
+
+    req.session.user = {
+      email: user.email,
+      _id: user._id
+    }
+
+    res.send("you are signed in");
+  } catch (error) {
+    console.error('Error in sign in', error.message);
+  }
+}
+
+const signOutUser = (req, res) => {
+  try {
+    req.session.destroy();
+    res.send("you signed out");
+  } catch (error) {
+    console.error("error in sign out", error.message);
+  }
+}
+
+const updatePassword  = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if(!user) {
+      return res.send("No user with this ID");
+    }
+    if(req.body.newPassword !== req.body.confirmPassword)
+    {
+      return res.send('Password doesnt match confirmm password');
+    }
+
+    const hashedPassword = bcrypt.hashSync(req.body.newPassword, 12);
+    user.password = hashedPassword;
+    await user.save();
+    res.send("password updated")
+  } catch (error) {
+    console.error("error in updating the password", error.message)
+  }
+}
 module.exports = {
   registerUser,
+  signInUser,
+  signOutUser,
+  updatePassword
 }
