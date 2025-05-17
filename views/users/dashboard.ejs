@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
   <div>
     <div>
-      <h3>Courses enrolled</h3>
+      <h3>Enrolled Courses</h3>
       <ul>
         <% user.coursesEnrolled.forEach((course) => { %>
           <li> <%= course %> </li>
@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <h3>Courses Finshed</h3>
+      <h3>Completed Courses</h3>
       <ul>
         <% user.coursesFinished.forEach((course) => { %>
           <li> <%= course %> </li>
