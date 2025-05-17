@@ -45,11 +45,9 @@ const signInUser = async (req, res) => {
       coursesEnrolled: user.coursesEnrolled,
       coursesFinished: user.coursesFinished,
     }
-    console.log(req.session.user)
-    req.session.save((e) => {
-      if(e) return res.send("error in signin");
-      res.render("./users/dashboard.ejs")
-    });
+
+    req.session.save();
+    res.redirect(`/users/${user._id}`);
   } catch (error) {
     console.error('Error in sign in', error.message);
   }

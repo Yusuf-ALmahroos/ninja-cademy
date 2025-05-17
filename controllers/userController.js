@@ -8,13 +8,11 @@ const getUserById = async (req, res) => {
       _id: user._id,
       username: user.username
     }
-    res.send(data)
+    res.render("./users/dashboard.ejs")
   } catch (error) {
     console.error('An error has occurred finding a user!', error.message)
   }
 }
-
-
 
 module.exports = {
   getUserById
