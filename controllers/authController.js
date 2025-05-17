@@ -36,7 +36,7 @@ const signInUser = async (req, res) => {
 
     const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
     if(!isValidPassword) {
-      return res.send('Wrong password');
+      return res.render('./auth/sign-in.ejs', {wrongPass: true});
     }
 
     req.session.user = {
