@@ -13,6 +13,7 @@
         <a href="/auth/sign-in">sign-in</a>
       <% } else { %>
         <a href="/auth/sign-out">sign-out</a>
+        <a href=<%= `/auth/${user._id}/update-password` %>>update password</a>
       <% } %>
       
     </div>

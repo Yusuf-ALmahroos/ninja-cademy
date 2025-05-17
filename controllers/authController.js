@@ -44,7 +44,7 @@ const signInUser = async (req, res) => {
       _id: user._id
     }
 
-    res.render(`./users/dashboard.ejs`, {user: user})
+    res.render(`./users/dashboard.ejs`)
   } catch (error) {
     console.error('Error in sign in', error.message);
   }
