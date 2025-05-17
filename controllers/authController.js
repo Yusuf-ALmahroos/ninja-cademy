@@ -36,7 +36,7 @@ const signInUser = async (req, res) => {
 
     const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
     if(!isValidPassword) {
-      return res.render('./auth/sign-in.ejs', {wrongPass: true});
+      res.send('Wrong password');
     }
 
     req.session.user = {
@@ -44,7 +44,7 @@ const signInUser = async (req, res) => {
       _id: user._id
     }
 
-    res.render(`./users/dashboard.ejs`)
+    res.send("you are signed in");
   } catch (error) {
     console.error('Error in sign in', error.message);
   }
