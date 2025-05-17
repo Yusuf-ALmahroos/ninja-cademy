@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= course.title %></title>
+</head>
+<body>
+  <h1><%= course.title %></h1>
+  <ul>
+    <li><strong>Categories:</strong>
+      <% if (course.categories && course.categories.length > 0) { %>
+        <%= course.categories.join(', ') %>
+      <% } else { %>
+        None
+      <% } %>
+    </li>
+    <li><strong>Period (weeks):</strong> <%= course.periodInWeeks %></li>
+    <li><strong>Progress:</strong> <%= course.progress %></li>
+    <li><strong>Users Enrolled:</strong> <%= course.users.length %></li>
+    <li><strong>Lessons:</strong> <%= course.lessons.length %></li>
+  </ul>
+  <a href="/courses">Back to Courses</a>
+</body>
+</html>
