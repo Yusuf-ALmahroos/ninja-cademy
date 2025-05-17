@@ -1,5 +1,21 @@
 <%- include('../partials/header.ejs') %>
   <div>
-    Dashboards
+    <div>
+      <h3>Courses enrolled</h3>
+      <ul>
+        <% user.coursesEnrolled.forEach((course) => { %>
+          <li> <%= course %> </li>
+        <% })%>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Courses Finshed</h3>
+      <ul>
+        <% user.coursesFinished.forEach((course) => { %>
+          <li> <%= course %> </li>
+        <% })%>
+      </ul>
+    </div>
   </div>
 <%- include('../partials/footer.ejs') %>
