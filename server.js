@@ -4,7 +4,7 @@ const methodOverride = require('method-override');
 const session        = require('express-session');
 const db             = require('./db');
 const userRouter = require('./routes/userRouter.js')
-
+const courseRouter = require('./routes/courseRouter.js')
 const authRouter = require('./routes/authRouter.js');
 
 require('dotenv').config();
@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/users', userRouter)
+app.use('/courses', courseRouter)
 
 app.get('/', (req, res) => {
   res.render('index.ejs');
