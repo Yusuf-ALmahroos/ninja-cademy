@@ -5,6 +5,8 @@ const session        = require('express-session');
 const db             = require('./db');
 const userRouter = require('./routes/userRouter.js')
 
+const authRouter = require('./routes/authRouter.js');
+
 require('dotenv').config();
 
 const app = express();
@@ -34,3 +36,5 @@ const PORT = process.env.PORT ? process.env.PORT : 3000;
 app.listen(PORT, () => {
   console.log(`Listening to port: ${PORT}`);
 })
+
+app.use('/auth', authRouter);
