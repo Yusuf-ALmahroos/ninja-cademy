@@ -1,6 +1,10 @@
 <%- include('../partials/header.ejs') %>
   <div>
     <div>
+      <h3>All Courses</h3>
+      <%- include('../partials/courses-form.ejs') %>
+    </div>
+    <div>
       <h3>Enrolled Courses</h3>
       <ul>
         <% user.coursesEnrolled.forEach((course) => { %>
