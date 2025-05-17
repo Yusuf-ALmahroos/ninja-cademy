@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= course.title %></title>
-</head>
-<body>
+<%- include('../partials/header.ejs') %>
   <h1><%= course.title %></h1>
   <ul>
     <li><strong>Categories:</strong>
@@ -19,5 +14,4 @@
     <li><strong>Lessons:</strong> <%= course.lessons.length %></li>
   </ul>
   <a href="/courses">Back to Courses</a>
-</body>
-</html>
+  <%- include('../partials/footer.ejs') %>
