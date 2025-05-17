@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
   }
 }
 
-const signInUser  = async (req, res) => {
+const signInUser = async (req, res) => {
   try {
     const user = await User.findOne({email: req.body.email})
     if(!user) {
@@ -36,7 +36,7 @@ const signInUser  = async (req, res) => {
 
     const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
     if(!isValidPassword) {
-      res.send('Wrong password');
+      return res.send('Wrong password');
     }
 
     req.session.user = {
@@ -44,7 +44,7 @@ const signInUser  = async (req, res) => {
       _id: user._id
     }
 
-    res.send("you are signed in");
+    res.render(`./users/dashboard.ejs`, {user: user})
   } catch (error) {
     console.error('Error in sign in', error.message);
   }
@@ -73,7 +73,7 @@ const updatePassword  = async (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.newPassword, 12);
     user.password = hashedPassword;
     await user.save();
-    res.send("password updated")
+    res.render("./auth/confirm.ejs");
   } catch (error) {
     console.error("error in updating the password", error.message)
   }

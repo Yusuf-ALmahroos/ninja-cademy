@@ -16,4 +16,8 @@ router.get('/sign-up', (req, res) => {
   res.render('./auth/sign-up.ejs');
 });
 
+router.get('/:id/update-password', (req, res) => {
+  res.render('./auth/update-password.ejs', {user: {_id: req.params.id}});
+})
+
 module.exports = router;
