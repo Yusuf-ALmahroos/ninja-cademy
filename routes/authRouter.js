@@ -9,15 +9,11 @@ router.get('/sign-out', authController.signOutUser);
 router.put('/:id', authController.updatePassword);
 
 router.get('/sign-in', (req, res) => {
-  res.render('./auth/sign-in.ejs');
+  res.render('./auth/sign-in.ejs',  {wrongPass: false});
 });
 
 router.get('/sign-up', (req, res) => {
   res.render('./auth/sign-up.ejs');
 });
-
-router.get('/:id/update-password', (req, res) => {
-  res.render('./auth/update-password.ejs', {user: {_id: req.params.id}});
-})
 
 module.exports = router;
