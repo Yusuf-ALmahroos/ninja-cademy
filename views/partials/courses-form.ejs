@@ -1,0 +1,8 @@
+<form action="enroll"  method="post">
+  <select name="courses" multiple>
+    <% course.courses.forEach((item, idx) => { %>
+      <option value="<%= item._id %>"><%= item.title %></option>
+    <%  }) %>
+  </select>
+  <button type="submit">Add</button>
+</form>
