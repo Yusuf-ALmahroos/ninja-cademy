@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User   = require('../models/user');
+const Course = require('../models/course');
 
 const registerUser = async (req, res) => {
   try {
@@ -39,11 +40,14 @@ const signInUser = async (req, res) => {
       return res.render('./auth/sign-in.ejs', {wrongPass: true});
     }
 
+    const allCourses = await Course.find();
+    console.log(allCourses);
     req.session.user = {
       email: user.email,
       _id: user._id,
       coursesEnrolled: user.coursesEnrolled,
       coursesFinished: user.coursesFinished,
+       courses: allCourses
     }
 
     req.session.save();

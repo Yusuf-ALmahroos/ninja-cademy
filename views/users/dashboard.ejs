@@ -2,7 +2,14 @@
   <div>
     <div>
       <h3>All Courses</h3>
-      <%- include('../partials/courses-form.ejs') %>
+      <form action="enroll"  method="post">
+        <select name="courses" multiple>
+          <% user.courses.forEach((item, idx) => { %>
+            <option value="<%= item._id %>"><%= item.title %></option>
+          <%  }) %>
+        </select>   
+    <button type="submit">Add</button>
+   </form>
     </div>
     <div>
       <h3>Enrolled Courses</h3>

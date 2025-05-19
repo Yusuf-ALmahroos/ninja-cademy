@@ -33,7 +33,6 @@ app.use(session({
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user
-  res.locals.course = req.session.course
   next()
 })
 
@@ -47,13 +46,7 @@ app.use('/lessons', lessonRouter)
 
 
 app.get('/', async (req, res) => {
-  const allCourses = await Course.find();
-  req.session.course = {
-    courses: allCourses,
-  }
-  req.session.save();
   res.render('index', { layout: 'layout' });
-
 })
 
 const PORT = process.env.PORT ? process.env.PORT : 3000;
