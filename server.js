@@ -2,6 +2,10 @@ const express        = require('express');
 const logger         = require('morgan');
 const methodOverride = require('method-override');
 const session        = require('express-session');
+const expressLayouts =require('express-ejs-layouts');
+const path = require('path');
+const app = express();
+app.use(express.static('public'));
 const db             = require('./db');
 const userRouter = require('./routes/userRouter.js')
 const courseRouter = require('./routes/courseRouter.js')
@@ -9,9 +13,13 @@ const lessonRouter = require('./routes/lessonRouter.js')
 const authRouter = require('./routes/authRouter.js');
 const Course = require('./models/course.js');
 
-require('dotenv').config();
+app.use(expressLayouts);
+app.set('layout','layout')
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
 
-const app = express();
+
+require('dotenv').config();
 
 //app.use(express.static('public'))  for css later
 
@@ -44,7 +52,8 @@ app.get('/', async (req, res) => {
     courses: allCourses,
   }
   req.session.save();
-  res.render('index.ejs');
+  res.render('index', { layout: 'layout' });
+
 })
 
 const PORT = process.env.PORT ? process.env.PORT : 3000;
@@ -52,3 +61,4 @@ const PORT = process.env.PORT ? process.env.PORT : 3000;
 app.listen(PORT, () => {
   console.log(`Listening to port: ${PORT}`);
 })
+
