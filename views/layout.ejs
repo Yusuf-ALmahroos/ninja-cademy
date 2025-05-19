@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NinjaCademy</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+        <h2 class="brand">NinjaCademy</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/users/dashboard">My Courses</a></li>
+        <li><a href="/auth/sign-out">Logout</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <%- body %>
+    </main>
+  </div>
+     <%- include('./partials/header') %>
+    <%- include('./partials/footer') %>
+    <div class="top-links">
+        <a href="/auth/sign-up">Sign Up</a>
+        <a href="/auth/sign-in">Sign In</a>
+    </div>
+</body>
+</html>
