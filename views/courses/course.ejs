@@ -12,6 +12,26 @@
     <li><strong>Progress:</strong> <%= course.progress %></li>
     <li><strong>Users Enrolled:</strong> <%= course.users.length %></li>
     <li><strong>Lessons:</strong> <%= course.lessons.length %></li>
+  
+    <% if (course.lessons && course.lessons.length > 0) { %>
+      <li>
+        <strong>Lesson List:</strong>
+        <ul>
+          <% course.lessons.forEach(function(lesson) { %>
+            <li>
+              <strong><%= lesson.title %></strong>
+              <% if (lesson.description) { %>
+                <p><%= lesson.description %></p>
+              <% } %>
+              <a href="/lessons/<%= lesson._id %>">View Lesson</a>
+            </li>
+          <% }) %>
+        </ul>
+      </li>
+    <% } else { %>
+      <li>No lessons found for this course.</li>
+    <% } %>
+  
   </ul>
   <a href="/courses">Back to Courses</a>
-  <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>
