@@ -1,6 +1,5 @@
 body {
-  background: #BEDEFC;
-background: linear-gradient(90deg, rgba(190, 222, 252, 1) 30%, rgba(205, 180, 219, 1) 70%, rgba(237, 221, 83, 1) 96%);
+  background: #faedcd;
   font-family: sans-serif;
 }
 
@@ -22,7 +21,7 @@ header, footer {
 
 .sidebar {
   width: 200px;
-  background-color: #0077b6;
+  background-color: #a3b18a;
   color: white;
   padding: 20px;
 }
@@ -82,7 +81,7 @@ main {
 
 .top-links a {
   margin-left: 10px;
-  color: #0077b6;
+  color: #a3b18a;
   text-decoration: none;
   font-weight: bold;
 }
@@ -128,7 +127,7 @@ form button[type="submit"] {
   margin-top: 20px;
   width: 100%;
   padding: 12px;
-  background-color: #00b4d8;
+  background-color: #a3b18a;
   border: none;
   color: white;
   font-weight: bold;
@@ -138,5 +137,5 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-  background-color: #00b4d8;
+  background-color: #a3b18a;
 }
