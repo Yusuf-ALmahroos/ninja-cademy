@@ -4,10 +4,6 @@ const User = require('../models/user.js')
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
-    const data = {
-      _id: user._id,
-      username: user.username
-    }
     res.render("./users/dashboard.ejs")
   } catch (error) {
     console.error('An error has occurred finding a user!', error.message)
@@ -17,9 +13,22 @@ const getUserById = async (req, res) => {
 const enrollCourse = async (req, res) => {
   try {
     const user = await User.findById(req.session.user._id)
-    console.log(req.body.courses);
-    res.send(user)
-    //user.coursesEnrolled.push()
+
+    if(req.body.courses)
+    {
+      if(Array.isArray(req.body.courses)){
+        user.coursesEnrolled.push(...req.body.courses);
+      } else {
+        user.coursesEnrolled.push(req.body.courses);
+      }   
+    }
+    user.save();
+    req.session.user = {
+      ...req.session.user,
+      coursesEnrolled: user.coursesEnrolled,
+    }
+    req.session.save();
+    res.redirect(`/users/${user._id}`);
   } catch (error) {
     console.error("error in enrolling course", error.message)
   }
