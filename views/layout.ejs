@@ -12,9 +12,7 @@
         <h2 class="brand">NinjaCademy</h2>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/courses">Courses</a></li>
         <li><a href="/users/dashboard">My Courses</a></li>
-        <li><a href="/auth/sign-out">Logout</a></li>
       </ul>
     </aside>
 
@@ -22,11 +20,12 @@
       <%- body %>
     </main>
   </div>
-     <%- include('./partials/header') %>
+      <%- include('./partials/header') %>
     <%- include('./partials/footer') %>
     <div class="top-links">
-        <a href="/auth/sign-up">Sign Up</a>
+      <a href="/auth/sign-up">Sign Up</a>
         <a href="/auth/sign-in">Sign In</a>
+      </div>
     </div>
 </body>
 </html>
