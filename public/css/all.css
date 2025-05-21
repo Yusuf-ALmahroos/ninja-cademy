@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  background: #faedcd;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #333;
+  font-weight: 700;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+header, footer {
+  background-color: #222;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #a3b18a;
+  color: white;
+  padding: 20px;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 2px 0 10px rgba(163, 177, 138, 0.15);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s;
+}
+
+.sidebar a:hover {
+  color: #333;
+}
+
+main {
+  flex: 1;
+  padding: 30px 3vw;
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.brand {
+  color: white;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.courses-page {
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+.courses-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 34px;
+  color: #333;
+  text-align: center;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  letter-spacing: 1.5px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.course-card {
+  background: #fffbe6;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(163, 177, 138, 0.15);
+  padding: 32px 26px 24px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
+  border: 2.5px solid #a3b18a;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-card:hover {
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 12px 32px rgba(163, 177, 138, 0.18);
+  border-color: #588157;
+}
+
+.course-title {
+  font-size: 1.35rem;
+  color: #588157;
+  margin-bottom: 12px;
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.course-meta {
+  margin-bottom: 12px;
+  color: #606c38;
+  font-size: 1.02rem;
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.course-meta span {
+  display: inline-block;
+  margin-right: 18px;
+  margin-bottom: 3px;
+  background: #a3b18a22;
+  border-radius: 6px;
+  padding: 3px 10px;
+}
+
+.course-categories {
+  margin-bottom: 10px;
+  font-size: 0.99rem;
+  color: #7c5e2e;
+  font-family: 'Century Gothic', Arial, sans-serif;
+}
+
+.course-categories span {
+  background: #f9dcc4;
+  border-radius: 5px;
+  margin-right: 8px;
+  padding: 2.5px 9px;
+  font-size: 0.93rem;
+}
+
+.progress-container {
+  background: #e9edc9;
+  border-radius: 8px;
+  height: 15px;
+  margin-bottom: 10px;
+  width: 93%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #a3b18a, #588157 90%);
+  height: 100%;
+  border-radius: 8px 0 0 8px;
+  transition: width 0.5s;
+}
+
+.progress-label {
+  position: absolute;
+  top: -18px;
+  right: 0;
+  font-size: 0.97rem;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.course-actions {
+  margin-top: 18px;
+  text-align: right;
+}
+
+.course-actions a,
+.course-actions button {
+  background: #a3b18a;
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(163,177,138,0.09);
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.course-actions a:hover,
+.course-actions button:hover {
+  background: #588157;
+  box-shadow: 0 4px 14px rgba(163,177,138,0.14);
+}
+
+@media (max-width: 900px) {
+  .courses-page {
+    padding: 0 6vw;
+  }
+  .course-grid {
+    gap: 18px;
+  }
+  .course-card {
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .courses-page {
+    padding: 0 2vw;
+  }
+  .course-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

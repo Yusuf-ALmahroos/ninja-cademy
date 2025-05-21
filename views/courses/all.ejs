@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/all.css">
+  <title>All Courses</title>
+</head>
+<body>
+  <h1>All Courses</h1>
+  <ul>
+    <% courses.forEach(course => { %>
+      <li>
+        <strong>Title:</strong> <%= course.title %><br>
+        <strong>Categories:</strong> <%= course.categories.join(', ') %><br>
+        <strong>Period (weeks):</strong> <%= course.periodInWeeks %><br>
+        <strong>Progress:</strong> <%= course.progress %> %<br>
+        <strong>Lessons:</strong> <%= course.lessons.length %> lessons<br>
+        <strong>Students Enrolled:</strong> <%= course.users.length %>
+      </li>
+      <hr>
+    <% }) %>
+  </ul>
+</body>
+</html>
