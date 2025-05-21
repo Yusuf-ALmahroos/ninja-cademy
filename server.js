@@ -2,21 +2,29 @@ const express        = require('express');
 const logger         = require('morgan');
 const methodOverride = require('method-override');
 const session        = require('express-session');
-const expressLayouts =require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
-app.use(express.static('public'));
-const db             = require('./db');
+
+const db = require('./db');
 const userRouter = require('./routes/userRouter.js')
 const courseRouter = require('./routes/courseRouter.js')
 const lessonRouter = require('./routes/lessonRouter.js')
 const authRouter = require('./routes/authRouter.js');
 const Course = require('./models/course.js');
 
-app.use(expressLayouts);
+
+
+app.use(express.static('public'));
 app.set('layout','layout')
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
+
+// Set Views
+
+app.set('views', './views')
+app.set('view engine','ejs');
+
 
 
 require('dotenv').config();
@@ -30,7 +38,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
-
+app.use(expressLayouts);
 app.use((req, res, next) => {
   res.locals.user = req.session.user
   next()
