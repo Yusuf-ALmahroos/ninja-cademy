@@ -1,10 +1,10 @@
-<%- include('../partials/header.ejs') %>
+
   <div>
     <div>
       <h3>All Courses</h3>
       <form action="enroll"  method="post">
         <select name="courses" multiple>
-          <% user.courses.forEach((item, idx) => { %>
+          <% course.courses.forEach((item, idx) => { %>
             <option value="<%= item._id %>"><%= item.title %></option>
           <%  }) %>
         </select>   
@@ -29,4 +29,7 @@
       </ul>
     </div>
   </div>
+
+<%- include('../partials/header.ejs') %>
+  
 <%- include('../partials/footer.ejs') %>
