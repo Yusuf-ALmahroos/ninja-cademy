@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
       coursesFinished: []
     })
 
-    res.send(user)
+    res.render('./auth/sign-in', {wrongPass: false});
   } catch (error) {
     console.error("error in registering", error.message);
   }
@@ -40,14 +40,11 @@ const signInUser = async (req, res) => {
       return res.render('./auth/sign-in.ejs', {wrongPass: true});
     }
 
-    const allCourses = await Course.find();
-    console.log(allCourses);
     req.session.user = {
       email: user.email,
       _id: user._id,
       coursesEnrolled: user.coursesEnrolled,
       coursesFinished: user.coursesFinished,
-       courses: allCourses
     }
 
     req.session.save();

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const courseSchema = mongoose.Schema({
+const courseSchema = new mongoose.Schema({
   categories:    [{type: String, required: true}],
   periodInWeeks: {type: Number, required: true},
   progress:      {type: Number, required: true},
