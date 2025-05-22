@@ -5,8 +5,11 @@ const Course = require('../models/course.js');
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
-    const allCourses = await Course.find();
+
+    const allCourses = await Course.find()
     res.render('./users/dashboard.ejs', { user, course: { courses: allCourses } });
+    //.populate('coursesEnrolled')
+    //.populate('coursesFinished');
   } catch (error) {
     console.error('An error has occurred finding a user!', error.message)
   }
