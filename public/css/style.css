@@ -8,7 +8,7 @@ h1, h2, h3 {
 }
 
 header, footer {
-  background-color: #222;
+  background-color: #a3b18a;
   color: white;
   padding: 10px;
   text-align: center;
@@ -75,7 +75,7 @@ main {
 
 .top-links {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 20px;
 }
 
@@ -138,4 +138,43 @@ form button[type="submit"] {
 
 form button[type="submit"]:hover {
   background-color: #a3b18a;
+}
+.auth-actions {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+.auth-actions a {
+  color:#a3b18a ;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.auth-actions a:hover {
+  text-decoration: underline;
+}
+
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  color: #a3b18a;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
