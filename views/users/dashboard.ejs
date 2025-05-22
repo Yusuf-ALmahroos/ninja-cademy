@@ -1,7 +1,8 @@
 <%- include('../partials/header.ejs') %>
-  <div>
-    <div>
-      <h3>All Courses</h3>
+<h1 class="page-title">Course Enrollment Dashboard</h1>
+    <div class="auth-actions"> |
+  <a href="/auth/<%= user._id %>/update-password">Update password</a> |
+</div>
       <form action="enroll" method="post">
   <% user.courses.forEach((item, idx) => { %>
     <div class="course-item">
