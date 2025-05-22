@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: {type: String, required: true},
   email:    {type: String, required: true},
   password: {type: String, required: true},
-  coursesEnrolled: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}],
-  coursesFinished: [{type: mongoose.Schema.Types.ObjectId, ref: 'Course'}]
+  coursesEnrolled: [String],
+  coursesFinished: [String]
 }, {timestamps: true})
 
 const User = mongoose.model('User', userSchema);

@@ -1,12 +1,15 @@
 
-const User = require('../models/user.js')
+const User = require('../models/user.js');
+const Course = require('../models/course.js');
 
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
-  .populate('coursesEnrolled')
-  .populate('coursesFinished');
-    res.render("./users/dashboard.ejs")
+
+    const allCourses = await Course.find()
+    res.render('./users/dashboard.ejs', { user, course: { courses: allCourses } });
+    //.populate('coursesEnrolled')
+    //.populate('coursesFinished');
   } catch (error) {
     console.error('An error has occurred finding a user!', error.message)
   }
@@ -15,13 +18,23 @@ const getUserById = async (req, res) => {
 const enrollCourse = async (req, res) => {
   try {
     const user = await User.findById(req.session.user._id)
-
     if(req.body.courses)
     {
-      if(Array.isArray(req.body.courses)){
-        user.coursesEnrolled.push(...req.body.courses);
+      console.log((req.body.courses));
+      const titles = req.body.courses;
+      if(Array.isArray(titles)){
+
+        titles.forEach((title) => {
+        if(!user.coursesEnrolled.includes(title))
+        {
+          user.coursesEnrolled.push(title);
+        }
+      })
       } else {
-        user.coursesEnrolled.push(req.body.courses);
+        if(!user.coursesEnrolled.includes(titles))
+        {
+          user.coursesEnrolled.push(titles);
+        }
       }   
     }
     user.save();
