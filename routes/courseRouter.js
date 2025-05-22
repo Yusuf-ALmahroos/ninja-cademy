@@ -13,7 +13,7 @@ router.get('/all', async (req, res) => {
 router.post('/', courseController.addCourse)
 router.get('/', courseController.getAllCourses)
 router.get('/:id', courseController.getCourseById)
-router.put('/', courseController.updateCourseStatus)
+router.put('/:id', courseController.updateCourseStatus)
 router.delete('/:id', courseController.deleteCourse)
 
 module.exports = router
