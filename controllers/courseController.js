@@ -7,6 +7,7 @@ const addCourse = async (req, res) => {
     const course = await Course.create(req.body)
     res.send(course)
   } catch (error) {
+    console.error(req.body)
     console.error('An error has occurred adding a course!', error.message)
   }
 }

@@ -13,11 +13,19 @@
         <strong>Title:</strong> <%= course.title %><br>
         <strong>Categories:</strong> <%= course.categories.join(', ') %><br>
         <strong>Period (weeks):</strong> <%= course.periodInWeeks %><br>
-        <strong>Lessons:</strong> <%= course.lessons.length %> lessons<br>
+        <strong>Lesson/s:</strong> <%= course.lessons.length %> lesson/s<br>
+        <ul>
+          <% course.lessons.forEach(lesson => { %>
+            <li>
+              <a href="/lessons/<%= lesson._id %>"><%= lesson.title %></a>
+            </li>
+          <% }) %>
+        </ul> 
         <strong>Students Enrolled:</strong> <%= course.users.length %>
       </li>
       <hr>
     <% }) %>
   </ul>
+  <a href="/">Back to Home Page</a>
 </body>
 </html>

@@ -6,14 +6,16 @@ const courseController = require('../controllers/courseController.js')
 const Course = require('../models/course'); 
 
 router.get('/all', async (req, res) => {             
-  const allCourses = await Course.find(); 
+  const allCourses = await Course.find()
+  .populate('lessons')  // <-- added this to show lesson
+  .populate('users'); 
   res.render('courses/all', { courses: allCourses });
 })
 
 router.post('/', courseController.addCourse)
 router.get('/', courseController.getAllCourses)
 router.get('/:id', courseController.getCourseById)
-router.put('/', courseController.updateCourseStatus)
+router.put('/:id', courseController.updateCourseStatus)
 router.delete('/:id', courseController.deleteCourse)
 
 module.exports = router
