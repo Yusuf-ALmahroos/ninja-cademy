@@ -24,7 +24,7 @@ const getAllCourses = async (req, res) => {
 const getCourseById = async (req, res) => {
   try {
     const course = await Course.findById(req.params.id)
-    res.send(course)
+    res.render('./courses/course.ejs', {course});
   } catch (error) {
     console.error('An error has occurred retrieving the specified course!', error.message)
   }
@@ -46,10 +46,21 @@ const deleteCourse = async (req, res) => {
     res.send(`Course has been deleted successfully!`)
   }
 }
+
+const getCourseByTitle = async (req, res) => {
+  try {
+    const course = await Course.findOne({title: req.params.title})
+    res.render('./courses/course.ejs', {course});
+  } catch (error) {
+    console.error("error finding course by title");
+  }
+}
+
 module.exports = {
   addCourse,
   getAllCourses,
   getCourseById,
   updateCourseStatus,
-  deleteCourse
+  deleteCourse,
+  getCourseByTitle
 }

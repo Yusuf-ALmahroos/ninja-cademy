@@ -49,7 +49,28 @@ const enrollCourse = async (req, res) => {
   }
 }
 
+const renderDashboard =  async (req, res) => {
+  try {
+    let user = req.session.user;
+    if (!user)
+    {
+      user = {};
+      user.coursesEnrolled = user.coursesEnrolled || [];
+      user.coursesFinished = user.coursesFinished || [];
+      res.render('./auth/sign-in.ejs', {wrongPass: false});
+    }
+    else
+    {
+      const allCourses = await Course.find();
+      res.render('./users/dashboard.ejs', { user, course: { courses: allCourses } });
+    }
+  } catch (error) {
+    console.error("error in rendering dashboard");
+  }
+}
+
 module.exports = {
   getUserById,
-  enrollCourse
+  enrollCourse,
+  renderDashboard
 }

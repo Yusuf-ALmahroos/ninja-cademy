@@ -2,7 +2,6 @@ const express        = require('express');
 const logger         = require('morgan');
 const methodOverride = require('method-override');
 const session        = require('express-session');
-const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
 
@@ -13,23 +12,10 @@ const lessonRouter = require('./routes/lessonRouter.js')
 const authRouter = require('./routes/authRouter.js');
 const Course = require('./models/course.js');
 
-
-
 app.use(express.static('public'));
-app.set('layout','layout')
-app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'views'));
-
 // Set Views
 
-app.set('views', './views')
-app.set('view engine','ejs');
-
-
-
 require('dotenv').config();
-
-//app.use(express.static('public'))  for css later
 
 app.use(logger('dev'));
 app.use(methodOverride('_method'));
@@ -38,7 +24,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
-app.use(expressLayouts);
+
 app.use((req, res, next) => {
   res.locals.user = req.session.user
   next()
@@ -54,7 +40,7 @@ app.use('/lessons', lessonRouter)
 
 
 app.get('/', async (req, res) => {
-  res.render('index', { layout: 'layout' });
+  res.render('index.ejs');
 })
 
 const PORT = process.env.PORT ? process.env.PORT : 3000;
