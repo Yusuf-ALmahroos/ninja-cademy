@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
       coursesFinished: []
     })
 
-    res.render('./auth/sign-in', {wrongPass: false});
+    res.render('./auth/sign-in.ejs', {wrongPass: false});
   } catch (error) {
     console.error("error in registering", error.message);
   }
@@ -37,7 +37,7 @@ const signInUser = async (req, res) => {
 
     const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
     if(!isValidPassword) {
-      return res.render('./auth/sign-in.ejs', {wrongPass: true});
+      return res.render('/auth/sign-in.ejs', {wrongPass: true});
     }
 
     req.session.user = {
@@ -57,7 +57,7 @@ const signInUser = async (req, res) => {
 const signOutUser = (req, res) => {
   try {
     req.session.destroy();
-    res.send("you signed out");
+    res.redirect("/");
   } catch (error) {
     console.error("error in sign out", error.message);
   }

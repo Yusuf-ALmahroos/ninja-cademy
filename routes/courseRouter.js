@@ -9,7 +9,7 @@ router.get('/all', async (req, res) => {
   const allCourses = await Course.find()
   .populate('lessons')  // <-- added this to show lesson
   .populate('users'); 
-  res.render('courses/all', { courses: allCourses });
+  res.render('courses/all.ejs', { courses: allCourses });
 })
 
 router.get('/:title', courseController.getCourseByTitle)

@@ -21,11 +21,6 @@ header, footer {
   text-align: center;
 }
 
-.layout {
-  display: flex;
-  min-height: 100vh;
-}
-
 .sidebar {
   width: 200px;
   background-color: #a3b18a;

@@ -3,8 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ninja Cademy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/all.css">
+  <title>NinjaCademy</title>
 </head>
 <body>
-  <main>
-  </main>
+   <div class="home-page">
+    <h1>Welcome to NinjaCademy</h1>
+    <hr>
+  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <a href="/" class="brand-link">
+        <h2 class="brand">NinjaCademy</h2>
+      </a>
+      <ul>
+        <li><a href="/courses/all">NinjaCademy Courses</a></li>
+        <li><a href="/users/dashboard">My Dashboard</a></li>
+      </ul>
+    </aside>
+
+      <div class="top-links">
+        <% if(!user) { %>
+          <a href="/auth/sign-up">Sign Up</a>
+          <a href="/auth/sign-in">Sign In</a>
+        <% } else { %>
+          <a href="/auth/sign-out">Sign out</a>
+        <% } %>
+      </div>
+      <main>

@@ -57,12 +57,12 @@ const renderDashboard =  async (req, res) => {
       user = {};
       user.coursesEnrolled = user.coursesEnrolled || [];
       user.coursesFinished = user.coursesFinished || [];
-      res.render('./auth/sign-in', {wrongPass: false});
+      res.render('./auth/sign-in.ejs', {wrongPass: false});
     }
     else
     {
       const allCourses = await Course.find();
-      res.render('users/dashboard', { user, course: { courses: allCourses } });
+      res.render('./users/dashboard.ejs', { user, course: { courses: allCourses } });
     }
   } catch (error) {
     console.error("error in rendering dashboard");

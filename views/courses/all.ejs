@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/all.css">
-  <title>All Courses</title>
-</head>
-<body>
+<%- include('../partials/header.ejs') %>
   <h1>All Courses</h1>
   <ul>
     <% courses.forEach(course => { %>
@@ -27,5 +20,4 @@
     <% }) %>
   </ul>
   <a href="/">Back to Home Page</a>
-</body>
-</html>
+<%- include('../partials/footer.ejs') %>
