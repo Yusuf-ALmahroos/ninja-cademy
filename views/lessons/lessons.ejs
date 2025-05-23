@@ -1,0 +1,16 @@
+<%- include('../partials/header.ejs') %>
+<!-- updated this -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= lesson.title %></title>
+</head>
+<body>
+  <h1><%= lesson.title %></h1>
+  <div>
+    <%= lesson.content %>
+  </div>
+  <a href="/courses">Back to Courses</a>
+</body>
+</html>
+<%- include('../partials/footer.ejs') %>

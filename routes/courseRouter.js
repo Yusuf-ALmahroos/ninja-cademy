@@ -6,7 +6,9 @@ const courseController = require('../controllers/courseController.js')
 const Course = require('../models/course'); 
 
 router.get('/all', async (req, res) => {             
-  const allCourses = await Course.find(); 
+  const allCourses = await Course.find()
+  .populate('lessons')  // <-- added this to show lesson
+  .populate('users'); 
   res.render('courses/all', { courses: allCourses });
 })
 

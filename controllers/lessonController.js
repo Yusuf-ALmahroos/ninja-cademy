@@ -18,6 +18,19 @@ const addLesson = async (req, res) => {
   }
 }
 
+const showLesson = async (req, res) => {
+  try {
+    const lesson = await Lesson.findById(req.params.lessonId);
+    if (!lesson) {
+      return res.status(404).send('Lesson not found');
+    }
+      res.render('lessons/lessons', { lesson });
+  } catch (error) {
+    console.error('An error has occurred showing the lesson!', error.message);
+  }
+}
+
 module.exports = {
-  addLesson
+  addLesson,
+  showLesson
 }

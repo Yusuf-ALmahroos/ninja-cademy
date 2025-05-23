@@ -4,10 +4,12 @@ const lessonController = require('../controllers/lessonController.js')
 const Lesson = require('../models/lesson');
 
 
-router.get('/all', async (req, res) => {             
-  const allCourses = await Course.find().populate('lessons');
-  res.render('courses/all', { courses: allCourses });
-});
+/* router.get('/all', async (req, res) => {             
+  const allLessons = await Lesson.find().populate('lessons');
+  res.render('lessons/all', { courses: allLessons });
+}); */
+
+router.get('/lessons/:lessonId', lessonController.showLesson);
 
 router.post('/', lessonController.addLesson)
 
