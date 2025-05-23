@@ -22,7 +22,9 @@
       <h3>Enrolled Courses</h3>
       <ul>
         <% user.coursesEnrolled.forEach((course) => { %>
-          <li> <%= course %> </li>
+          <li>
+            <a href="/courses/<%= course %>"> <%= course %> </a>
+          </li>
         <% })%>
       </ul>
     </div>
@@ -31,7 +33,9 @@
       <h3>Completed Courses</h3>
       <ul>
         <% user.coursesFinished.forEach((course) => { %>
-          <li> <%= course %> </li>
+          <li>
+            <a href="/courses/<%= course %>"> <%= course %> </a>
+          </li>
         <% })%>
       </ul>
     </div>

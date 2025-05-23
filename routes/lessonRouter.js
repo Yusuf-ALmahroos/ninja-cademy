@@ -9,7 +9,7 @@ const Lesson = require('../models/lesson');
   res.render('lessons/all', { courses: allLessons });
 }); */
 
-router.get('/lessons/:lessonId', lessonController.showLesson);
+router.get('/:lessonId', lessonController.showLesson);
 
 router.post('/', lessonController.addLesson)
 

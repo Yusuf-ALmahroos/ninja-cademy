@@ -12,9 +12,10 @@ router.get('/all', async (req, res) => {
   res.render('courses/all', { courses: allCourses });
 })
 
+router.get('/:title', courseController.getCourseByTitle)
+
 router.post('/', courseController.addCourse)
 router.get('/', courseController.getAllCourses)
-router.get('/:id', courseController.getCourseById)
 router.put('/:id', courseController.updateCourseStatus)
 router.delete('/:id', courseController.deleteCourse)
 
