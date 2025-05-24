@@ -1,6 +1,6 @@
 const User = require('../models/user.js')
 const Lesson = require('../models/lesson.js')
-
+const Course = require('../models/course.js')
 
 const addLesson = async (req, res) => {
   try {
@@ -30,7 +30,52 @@ const showLesson = async (req, res) => {
   }
 }
 
+const addLessonAdmin = async (req, res) => {
+    try {
+    const course = await Course.findOne({title: req.body.courseTitle})
+    if(!course)
+    {
+      return res.send("unknown course");
+    }
+    const lesson = await Lesson.create({
+      title: req.body.title,
+      content: req.body.content,
+      description: req.body.description
+    })
+    if(lesson)
+    {
+      course.lessons.push(lesson._id)
+      await course.save();
+    }
+    res.render('./admin/a-dashboard.ejs');
+  } catch (error) {
+    console.error('An error has occurred adding a lesson!', error.message)
+  }
+}
+
+const deleteLessonAdmin = async (req, res) => {
+  try {
+    const course = await Course.findOne({title: req.body.courseTitle})
+    if(!course) return res.send("course dosnt exist");
+    const lesson = await Lesson.findOneAndDelete({title: req.body.title});
+    if(!lesson) 
+    {
+      return res.send("lesson dosnt exist");
+    }
+    else
+    {
+      course.lessons.pop(lesson._id);
+      await course.save();
+    }
+    res.render('./admin/a-dashboard.ejs');
+  } catch (error) {
+    console.log("error in admin delete course", error.message);
+  }
+}
+
 module.exports = {
   addLesson,
-  showLesson
+  showLesson,
+  addLessonAdmin,
+  deleteLessonAdmin
 }

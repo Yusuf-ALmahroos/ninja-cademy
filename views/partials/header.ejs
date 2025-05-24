@@ -28,8 +28,12 @@
         <% if(!user) { %>
           <a href="/auth/sign-up">Sign Up</a>
           <a href="/auth/sign-in">Sign In</a>
+          <a href="/auth/admin-sign-in">Sign In as Admin</a>
         <% } else { %>
           <a href="/auth/sign-out">Sign out</a>
+          <% if(user.isAdmin) { %>
+            <a href="/auth/admin-dashboard">Admin Dashboard</a>
+          <% } %>
         <% } %>
       </div>
       <main>

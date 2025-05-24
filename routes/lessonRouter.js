@@ -12,5 +12,7 @@ const Lesson = require('../models/lesson');
 router.get('/:lessonId', lessonController.showLesson);
 
 router.post('/', lessonController.addLesson)
+router.post('/admin', lessonController.addLessonAdmin);
+router.post('/admin-delete', lessonController.deleteLessonAdmin);
 
 module.exports = router
