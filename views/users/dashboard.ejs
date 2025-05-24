@@ -37,15 +37,18 @@
       </ul>
     </div>
 
-    <div>
-      <h3>Completed Courses</h3>
-      <ul>
-        <% user.coursesCompleted.forEach((course) => { %>
-          <li>
-            <a href="/courses/<%= course %>"> <%= course %></a>
-          </li>
-        <% }) %>
-      </ul>
-    </div>
-  </div>
+   <div>
+  <h3>Completed Courses</h3>
+  <ul>
+    <% if (user.coursesCompleted && user.coursesCompleted.length > 0) { %>
+      <% user.coursesCompleted.forEach((course) => { %>
+        <li>
+          <a href="/courses/<%= course %>"> <%= course %></a>
+        </li>
+      <% }) %>
+    <% } else { %>
+      <li>No completed courses</li>
+    <% } %>
+  </ul>
+</div>
 <%- include('../partials/footer.ejs') %>
