@@ -1,12 +1,20 @@
 <%- include('../partials/header.ejs') %>
+<style> h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #a3b18a;
+    padding-bottom: 10px;
+  }
+  </style>
   <div>
     <div>
       <h1 class="page-title">Course Enrollment Dashboard</h1>
     <div class="auth-actions"> |
     <a href="/auth/<%= user._id %>/update-password">Update password</a> |
     </div>
-            
-      <h3>All Courses</h3>
+          
       <form action="enroll" method="post">
       <% course.courses.forEach((item, idx) => { %>
         <div class="course-item">
