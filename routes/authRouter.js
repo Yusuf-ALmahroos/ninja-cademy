@@ -21,7 +21,7 @@ router.get('/:id/update-password', (req, res) => {
 })
 
 router.get('/auth/forget-password', (req, res) => {
-  res.render('./auth/forget-password')
+  res.render('./auth/forget-password.ejs')
 })
 
 module.exports = router;

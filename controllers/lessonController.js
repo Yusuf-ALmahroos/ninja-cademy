@@ -24,7 +24,7 @@ const showLesson = async (req, res) => {
     if (!lesson) {
       return res.status(404).send('Lesson not found');
     }
-      res.render('./lessons/lessons', { lesson });
+      res.render('./lessons/lessons.ejs', { lesson });
   } catch (error) {
     console.error('An error has occurred showing the lesson!', error.message);
   }
