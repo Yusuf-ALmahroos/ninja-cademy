@@ -1,6 +1,6 @@
 const User = require('../models/user.js')
 const Course = require('../models/course.js')
-
+const Lesson = require('../models/lesson.js')
 
 const addCourse = async (req, res) => {
   try {
@@ -12,13 +12,14 @@ const addCourse = async (req, res) => {
   }
 }
 
-const getAllCourses = async (req, res) => {
+const getAllCourses = async (req, res) => {   
   try {
-    const courses = await Course.find({})
-    res.send(courses)
+    const allCourses = await Course.find()
+    .populate('lessons')  // <-- added this to show lesson
+    res.render('courses/all.ejs', { courses: allCourses });
   } catch (error) {
-    console.error('An error has occurred retrieving your courses!', error.message)
-  }
+    console.error("error in getting all courses", error.message)
+  }          
 }
 
 const getCourseById = async (req, res) => {
@@ -50,9 +51,12 @@ const deleteCourse = async (req, res) => {
 const getCourseByTitle = async (req, res) => {
   try {
     const course = await Course.findOne({title: req.params.title})
-    res.render('./courses/course.ejs', {course});
+    const stringIds = course.lessons.map(id => id.toString())
+    const lessons = await Lesson.find({ _id: { $in: stringIds} })
+    const lessonsTitles = lessons.map(lesson => lesson.title);
+    res.render('./courses/course.ejs', {course, lessonsTitles});
   } catch (error) {
-    console.error("error finding course by title");
+    console.error("error finding course by title", error.message);
   }
 }
 

@@ -10,11 +10,10 @@
         <ul>
           <% course.lessons.forEach(lesson => { %>
             <li>
-              <a href="/lessons/<%= lesson._id %>"><%= lesson.title %></a>
+              <p><%= lesson.title %></p>
             </li>
           <% }) %>
         </ul> 
-        <strong>Students Enrolled:</strong> <%= course.users.length %>
       </li>
       <hr>
     <% }) %>
