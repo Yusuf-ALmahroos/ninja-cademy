@@ -1,5 +1,6 @@
 const User = require('../models/user.js')
 const Lesson = require('../models/lesson.js')
+const Course = require('../models/course.js')
 
 
 const addLesson = async (req, res) => {
@@ -30,7 +31,16 @@ const showLesson = async (req, res) => {
   }
 }
 
+const deleteLesson = async (req, res) => {
+  try {
+    await Lesson.findByIdAndDelete(req.params.id)
+  } catch (error) {
+    res.send('Lesson has been deleted successfully!')
+  }
+}
+
 module.exports = {
   addLesson,
-  showLesson
+  showLesson,
+  deleteLesson
 }

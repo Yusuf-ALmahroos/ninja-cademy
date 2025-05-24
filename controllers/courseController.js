@@ -43,7 +43,7 @@ const deleteCourse = async (req, res) => {
   try {
     await Course.findByIdAndDelete(req.params.id)
   } catch (error) {
-    res.send(`Course has been deleted successfully!`)
+    res.send('Course has been deleted successfully!')
   }
 }
 
