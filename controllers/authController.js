@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const User   = require('../models/user');
 const Course = require('../models/course');
 
+const AdminCodes = ["0000", "1212"];
+
 const registerUser = async (req, res) => {
   try {
     const userInDb = await User.findOne({email: req.body.email})
@@ -19,7 +21,8 @@ const registerUser = async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
       coursesEnrolled: [],
-      coursesFinished: []
+      coursesFinished: [],
+      isAdmin: false
     })
 
     res.render('./auth/sign-in.ejs', {wrongPass: false});
@@ -40,13 +43,16 @@ const signInUser = async (req, res) => {
       return res.render('./auth/sign-in.ejs', {wrongPass: true});
     }
 
+    user.isAdmin = false;
+    await user.save();
+
     req.session.user = {
       email: user.email,
       _id: user._id,
       coursesEnrolled: user.coursesEnrolled,
       coursesFinished: user.coursesFinished,
+      isAdmin: false
     }
-
     req.session.save();
     res.redirect(`/users/${user._id}`);
   } catch (error) {
@@ -106,10 +112,52 @@ const forgetPassword = async (req, res) => {
   }
 }
 
+const adminSignIn = async (req, res) => {
+  try {
+    const signInPageProps = {
+      wrongPass: false,
+      wrongCode: false
+    }
+    const user = await User.findOne({email: req.body.email})
+    if(!user) {
+      return res.send('No User Registerd with this email');
+    }
+
+    const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
+    if(!isValidPassword) {
+      signInPageProps.wrongPass = true
+      return res.render('./admin/a-sign-in.ejs', {signInPageProps});
+    }
+
+    if(!AdminCodes.includes(req.body.adminCode))
+    {
+      signInPageProps.wrongCode = true;
+      return res.render('./admin/a-sign-in.ejs', {signInPageProps})
+    }
+
+    user.isAdmin = true;
+    await user.save();
+
+    req.session.user = {
+      email: user.email,
+      _id: user._id,
+      coursesEnrolled: user.coursesEnrolled,
+      coursesFinished: user.coursesFinished,
+      isAdmin: true
+    }
+
+    req.session.save();
+    res.redirect(`/users/${user._id}`);
+  } catch (error) {
+    console.error('Error in sign in', error.message);
+  }
+}
+
 module.exports = {
   registerUser,
   signInUser,
   signOutUser,
   updatePassword,
-  forgetPassword
+  forgetPassword,
+  adminSignIn
 }

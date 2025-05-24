@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+<form action="/lessons/admin-delete" method="post">
+  <div>
+    <label>Course Title: </label>
+    <input type="text" name="courseTitle">
+  </div>
+  <div>
+    <label>Title: </label>
+    <input type="text" name="title">
+  </div>
+  <button type="submit">Delete</button>
+</form>
+<%- include('../partials/footer.ejs') %>
