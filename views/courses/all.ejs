@@ -83,23 +83,25 @@
 
 <div class="container">
   <h1>All Courses</h1>
-
-  <% courses.forEach(function(course) { %>
-    <div class="course">
-      <h2><%= course.title %></h2>
-      <p><strong>Categories:</strong> <%= course.categories.join(', ') %></p>
-      <p><strong>Period (weeks):</strong> <%= course.periodInWeeks %></p>
-      <p><strong>Total Lessons:</strong> <%= course.lessons.length %></p>
-      <p><strong>Students Enrolled:</strong> <%= course.users.length %></p>
-
-      <div class="lessons">
-        <% course.lessons.forEach(function(lesson) { %>
-          <a class="lesson-link" href="/lessons/<%= lesson._id %>"><%= lesson.title %></a>
-        <% }) %>
-      </div>
-    </div>
-  <% }) %>
-
+<ul>
+    <% courses.forEach(course => { %>
+      <li>
+        <strong>Title:</strong> <%= course.title %><br>
+        <strong>Categories:</strong> <%= course.categories.join(', ') %><br>
+        <strong>Period (weeks):</strong> <%= course.periodInWeeks %><br>
+        <strong>Lesson/s:</strong> <%= course.lessons.length %> lesson/s<br>
+        <ul>
+          <% course.lessons.forEach(lesson => { %>
+            <li>
+              <p><%= lesson.title %></p>
+            </li>
+          <% }) %>
+        </ul> 
+      </li>
+      <hr>
+    <% }) %>
+  </ul> 
+  
 </div>
 
 <%- include('../partials/footer.ejs') %>
