@@ -49,6 +49,22 @@ const enrollCourse = async (req, res) => {
   }
 }
 
+const completeCourse = async (req, res) => {
+  try {
+    
+    const courseTitle = req.body.courseTitle
+    const user = await User.findById(req.session.user._id)
+    if (user && !user.completedCourses.includes(courseTitle)) {
+      user.coursesCompleted.push(courseTitle);
+      await user.save();
+    }
+  } catch (error) {
+    console.error("error marking course as complete", error.message);
+
+  }
+};
+
+
 const renderDashboard =  async (req, res) => {
   try {
     let user = req.session.user;
@@ -56,7 +72,7 @@ const renderDashboard =  async (req, res) => {
     {
       user = {};
       user.coursesEnrolled = user.coursesEnrolled || [];
-      user.coursesFinished = user.coursesFinished || [];
+      user.coursesCompleted = user.coursesCompleted || [];
       res.render('./auth/sign-in.ejs', {wrongPass: false});
     }
     else
@@ -72,5 +88,6 @@ const renderDashboard =  async (req, res) => {
 module.exports = {
   getUserById,
   enrollCourse,
+  completeCourse,
   renderDashboard
 }

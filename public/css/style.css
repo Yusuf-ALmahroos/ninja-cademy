@@ -6,7 +6,7 @@ body {
   color: #333;
 }
 
-/* VISUALLY APPEALING MAIN-PHOTO STYLING */
+
 .main-photo {
   width: 520px;
   max-width: 95vw;
@@ -27,7 +27,7 @@ body {
   border-color: #588157;
 }
 
-/* HEADINGS */
+
 h1, h2, h3 {
   color: #283618;
   letter-spacing: 0.5px;
@@ -49,7 +49,7 @@ header, footer {
   background: rgba(255,255,255,0.02);
 }
 
-/* SIDEBAR */
+
 .sidebar {
   width: 230px;
   background: linear-gradient(180deg, #a3b18a 90%, #588157 100%);
@@ -95,7 +95,7 @@ header, footer {
   background: rgba(255,255,255,0.10);
 }
 
-/* MAIN CONTENT */
+
 main {
   flex: 1;
   padding: 36px 32px 32px 32px;
@@ -106,7 +106,7 @@ main {
   box-shadow: 0 0 32px rgba(54, 73, 88, 0.04);
 }
 
-/* LOGO/BRAND */
+
 .brand {
   color: #fff;
   text-align: center;
@@ -117,7 +117,7 @@ main {
   text-shadow: 0 2px 8px rgba(40,54,24,0.08);
 }
 
-/* HOMEPAGE */
+
 .home-page {
   text-align: center;
   margin-top: 40px;
@@ -140,7 +140,7 @@ main {
   opacity: 0.5;
 }
 
-/* TOP LINKS */
+
 .top-links {
   position: absolute;
   top: 24px;
@@ -162,7 +162,7 @@ main {
   color: #3a5a40;
 }
 
-/* FORM */
+
 form {
   background-color: #fff;
   max-width: 420px;
