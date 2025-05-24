@@ -73,9 +73,18 @@ const deleteLessonAdmin = async (req, res) => {
   }
 }
 
+const deleteLesson = async (req, res) => {
+  try {
+    await Lesson.findByIdAndDelete(req.params.id)
+  } catch (error) {
+    res.send('Lesson has been deleted successfully!')
+  }
+}
+
 module.exports = {
   addLesson,
   showLesson,
   addLessonAdmin,
-  deleteLessonAdmin
+  deleteLessonAdmin,
+  deleteLesson
 }
