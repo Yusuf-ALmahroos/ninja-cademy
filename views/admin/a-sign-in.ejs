@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs') %>
+<form action="/auth/admin-sign-in" method="post">
+  <div>
+    <label>Email: </label>
+    <input type="email" name="email" required>
+  </div>
+
+  <div>
+    <label>Password: </label>
+    <input type="password" name="password" required>
+  </div>
+
+  <div>
+    <label>Admin Code: </label>
+    <input type="text" name="adminCode" required>
+  </div>
+  <% if(signInPageProps) { %>
+    <% if(signInPageProps.wrongPass) { %>
+      <p>wrong password try again</p>
+    <% } else if(signInPageProps.wrongCode) { %>
+     <p>wrong admin code try again</p>
+    <% } %>
+  <% } %>
+  <button type="submit">Sign In</button>
+</form>
+<%- include('../partials/footer.ejs') %>

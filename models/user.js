@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
   email:    {type: String, required: true},
   password: {type: String, required: true},
   coursesEnrolled: [String],
-  coursesFinished: [String]
+  coursesFinished: [String],
+  isAdmin: {type: Boolean}
 }, {timestamps: true})
 
 const User = mongoose.model('User', userSchema);
