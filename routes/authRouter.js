@@ -7,6 +7,7 @@ router.post('/sign-up', authController.registerUser);
 router.post('/sign-in', authController.signInUser);
 router.get('/sign-out', authController.signOutUser);
 router.put('/:id', authController.updatePassword);
+router.post('/forget-password', authController.forgetPassword);
 
 router.get('/sign-in', (req, res) => {
   res.render('./auth/sign-in.ejs',  {wrongPass: false});
@@ -20,7 +21,7 @@ router.get('/:id/update-password', (req, res) => {
   res.render('./auth/update-password.ejs');
 })
 
-router.get('/auth/forget-password', (req, res) => {
+router.get('/forget-password', (req, res) => {
   res.render('./auth/forget-password.ejs')
 })
 

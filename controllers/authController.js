@@ -37,7 +37,7 @@ const signInUser = async (req, res) => {
 
     const isValidPassword = bcrypt.compareSync(req.body.password, user.password)
     if(!isValidPassword) {
-      return res.render('/auth/sign-in.ejs', {wrongPass: true});
+      return res.render('./auth/sign-in.ejs', {wrongPass: true});
     }
 
     req.session.user = {
@@ -82,9 +82,34 @@ const updatePassword  = async (req, res) => {
     console.error("error in updating the password", error.message)
   }
 }
+
+const forgetPassword = async (req, res) => {
+  try {
+    const user = await User.findOne({email: req.body.email});
+    if(!user)
+    {
+      res.render('./auth/sign-up.ejs');
+    }
+    else
+    {
+      if(req.body.newPassword !== req.body.confirmPassword)
+      {
+        return res.send('Password doesnt match confirmm password');
+      }
+      const hashedPassword = bcrypt.hashSync(req.body.newPassword, 12);
+      user.password = hashedPassword;
+      await user.save();
+      res.render("./auth/confirm.ejs");
+    }
+    } catch (error) {
+    console.error("error in forget passwird", error.message);
+  }
+}
+
 module.exports = {
   registerUser,
   signInUser,
   signOutUser,
-  updatePassword
+  updatePassword,
+  forgetPassword
 }
