@@ -9,16 +9,15 @@
       <% } %>
     </li>
     <li><strong>Period (weeks):</strong> <%= course.periodInWeeks %></li>
-    <li><strong>Users Enrolled:</strong> <%= course.users.length %></li>
     <li><strong>Lessons:</strong> <%= course.lessons.length %></li>
   
     <% if (course.lessons && course.lessons.length > 0) { %>
       <li>
         <strong>Lesson List:</strong>
         <ul>
-          <% course.lessons.forEach(function(lesson) { %>
+          <% course.lessons.forEach(function(lesson, idx) { %>
             <li>
-              <strong><%= lesson.title %></strong>
+              <strong><%= lessonsTitles[idx] %></strong>
               <% if (lesson.description) { %>
                 <p><%= lesson.description %></p>
               <% } %>
