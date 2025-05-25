@@ -264,6 +264,14 @@ form button[type="submit"]:hover {
   letter-spacing: 1px;
 }
 
+.no-style 
+{
+  all: unset; 
+  background: none;
+  color: initial;
+  padding: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 760px) {
   .layout {

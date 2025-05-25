@@ -66,5 +66,5 @@ module.exports = {
   getCourseById,
   updateCourseStatus,
   deleteCourse,
-  getCourseByTitle
+  getCourseByTitle,
 }
