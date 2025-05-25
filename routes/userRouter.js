@@ -9,6 +9,6 @@ const User = require('../models/user.js');
 router.get('/dashboard', userController.renderDashboard);
 router.get('/:id', userController.getUserById)
 router.post('/enroll', userController.enrollCourse)
-router.post('/:id/complete', userController.completeCourse);
+router.get('/complete/:title', userController.completeCourse);
 
 module.exports = router

@@ -264,6 +264,7 @@ form button[type="submit"]:hover {
   letter-spacing: 1px;
 }
 
+<<<<<<< HEAD
 .site-title {
   text-align: center;
   font-family: 'Century Gothic', Arial, sans-serif;
@@ -275,6 +276,17 @@ form button[type="submit"]:hover {
   line-height: 1.15;
 }
 
+=======
+.no-style 
+{
+  all: unset; 
+  background: none;
+  color: initial;
+  padding: 0;
+}
+
+/* Responsive Design */
+>>>>>>> 3322bcd7da98ed2e733e7890518b04f662d57ab3
 @media (max-width: 760px) {
   .layout {
     flex-direction: column;
