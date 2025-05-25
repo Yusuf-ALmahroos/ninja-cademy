@@ -218,7 +218,7 @@ form button[type="submit"]:hover {
   background-color: #3a5a40;
 }
 
-/* AUTH ACTIONS */
+
 .auth-actions {
   position: absolute;
   top: 54px;
@@ -240,7 +240,7 @@ form button[type="submit"]:hover {
   color: #3a5a40;
 }
 
-/* COURSE ITEM */
+
 .course-item {
   display: flex;
   justify-content: space-between;
@@ -254,7 +254,7 @@ form button[type="submit"]:hover {
   font-size: 1.07rem;
 }
 
-/* PAGE TITLE */
+
 .page-title {
   text-align: center;
   font-size: 30px;
@@ -264,7 +264,17 @@ form button[type="submit"]:hover {
   letter-spacing: 1px;
 }
 
-/* Responsive Design */
+.site-title {
+  text-align: center;
+  font-family: 'Century Gothic', Arial, sans-serif;
+  font-size: 2.95rem;
+  color: #63815e;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin: 0 0 8px 0;
+  line-height: 1.15;
+}
+
 @media (max-width: 760px) {
   .layout {
     flex-direction: column;

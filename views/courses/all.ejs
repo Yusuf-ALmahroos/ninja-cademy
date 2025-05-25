@@ -1,89 +1,6 @@
 <%- include('../partials/header.ejs') %>
-
-<style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color:#faedcd;
-    margin: 0;
-    padding: 0;
-  }
-
-  .container {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #a3b18a;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #a3b18a;
-    padding-bottom: 10px;
-  }
-
-  .course {
-    background-color: #fcfcfc;
-    border-left: 5px solid #cce3d6;
-    padding: 20px;
-    margin-bottom: 25px;
-    border-radius: 6px;
-  }
-
-  .course h2 {
-    margin-top: 0;
-    color: #333;
-  }
-
-  .course p {
-    margin: 6px 0;
-    color: #555;
-  }
-
-  .lessons {
-    margin-top: 10px;
-  }
-
-  .lesson-link {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 10px 20px;
-    background-color: #cce3d6;
-    color: #1d3557;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-    border: 2px solid #a3b18a;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  }
-
-  .lesson-link:hover {
-    background-color:#a3b18a ;
-    color: black;
-  }
-  
-  .back-link {
-    display: block;
-    text-align: center;
-    margin-top: 40px;
-    color:#cce3d6 ;
-    text-decoration: none;
-    font-size: 14px;
-  }
-
-  .back-link:hover {
-    color:#a3b18a;
-  }
-</style>
-
-<div class="container">
   <h1>All Courses</h1>
-<ul>
+  <ul>
     <% courses.forEach(course => { %>
       <li>
         <strong>Title:</strong> <%= course.title %><br>
@@ -100,8 +17,6 @@
       </li>
       <hr>
     <% }) %>
-  </ul> 
-  
-</div>
-
+  </ul>
+  <a href="/">Back to Home Page</a>
 <%- include('../partials/footer.ejs') %>
