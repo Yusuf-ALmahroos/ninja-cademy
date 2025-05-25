@@ -20,8 +20,8 @@ const registerUser = async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
-      coursesEnrolled: [],
-      coursesFinished: [],
+      coursesEnrolled:  [],
+      coursesCompleted: [],
       isAdmin: false
     })
 
@@ -50,7 +50,7 @@ const signInUser = async (req, res) => {
       email: user.email,
       _id: user._id,
       coursesEnrolled: user.coursesEnrolled,
-      coursesFinished: user.coursesFinished,
+      coursesCompleted: user.coursesCompleted,
       isAdmin: false
     }
     req.session.save();
@@ -142,7 +142,7 @@ const adminSignIn = async (req, res) => {
       email: user.email,
       _id: user._id,
       coursesEnrolled: user.coursesEnrolled,
-      coursesFinished: user.coursesFinished,
+      coursesCompleted: user.coursesCompleted,
       isAdmin: true
     }
 

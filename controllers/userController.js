@@ -52,12 +52,15 @@ const enrollCourse = async (req, res) => {
 const completeCourse = async (req, res) => {
   try {
     
-    const courseTitle = req.body.courseTitle
+    const courseTitle = req.params.title;
     const user = await User.findById(req.session.user._id)
-    if (user && !user.completedCourses.includes(courseTitle)) {
+    if (user && !user.coursesCompleted.includes(courseTitle)) {
       user.coursesCompleted.push(courseTitle);
       await user.save();
+      req.session.user.coursesCompleted.push(courseTitle);
+      req.session.save();
     }
+    res.redirect(`/courses/${courseTitle}`);
   } catch (error) {
     console.error("error marking course as complete", error.message);
 

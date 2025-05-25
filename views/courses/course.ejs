@@ -21,7 +21,10 @@
               <% if (lesson.description) { %>
                 <p><%= lesson.description %></p>
               <% } %>
-              <a href="/lessons/<%= lesson._id %>">View Lesson</a>
+              <form class="no-style" action="/lessons/<%= lesson._id %>" method="post">
+                <input class="no-style" type="hidden" name="courseTitle" value="<%= course.title %>">
+                <button>View Lesson</button>
+              </form>
             </li>
           <% }) %>
         </ul>
@@ -29,7 +32,8 @@
     <% } else { %>
       <li>No lessons found for this course.</li>
     <% } %>
-  
   </ul>
+  <a href="/users/complete/<%= course.title %>">Mark As Complete</a>
+  <a href="/users/dashboard">Back to Courses</a>
   
 <%- include('../partials/footer.ejs') %>
