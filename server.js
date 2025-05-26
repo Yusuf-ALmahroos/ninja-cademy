@@ -13,7 +13,7 @@ const authRouter = require('./routes/authRouter.js');
 const Course = require('./models/course.js');
 
 app.use(express.static('public'));
-// Set Views
+
 
 require('dotenv').config();
 
