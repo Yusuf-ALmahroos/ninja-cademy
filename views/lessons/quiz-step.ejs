@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<div class="quiz-container">
+  <h2>Lesson Quiz</h2>
+  <p>Question <%= questionIndex + 1 %> of <%= totalQuestions %></p>
+
+  <form method="POST" action="/quiz/<%= lessonId %>/next">
+    <input type="hidden" name="questionIndex" value="<%= questionIndex %>">
+
+    <div class="question-block">
+      <p><strong><%= question.question %></strong></p>
+
+      <% question.options.forEach((opt, i) => { %>
+        <label>
+          <input
+            type="radio"
+            name="answer"
+            value="<%= i %>"
+            <%= selected === i ? 'checked' : '' %>
+            required
+          >
+          <%= opt %>
+        </label><br>
+      <% }) %>
+    </div>
+
+    <div class="button-group">
+      <% if (questionIndex > 0) { %>
+        <a href="/quiz/<%= lessonId %>?q=<%= questionIndex - 1 %>" class="btn">Previous</a>
+      <% } %>
+      <button type="submit" class="btn">Next</button>
+    </div>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

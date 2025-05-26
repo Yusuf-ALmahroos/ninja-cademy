@@ -5,15 +5,20 @@ const session        = require('express-session');
 const path = require('path');
 const app = express();
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 const db = require('./db');
 const userRouter = require('./routes/userRouter.js')
 const courseRouter = require('./routes/courseRouter.js')
 const lessonRouter = require('./routes/lessonRouter.js')
 const authRouter = require('./routes/authRouter.js');
 const Course = require('./models/course.js');
+const quizRouter = require('./routes/quizRouter');
+
+
 
 app.use(express.static('public'));
-// Set Views
 
 require('dotenv').config();
 
@@ -37,7 +42,7 @@ app.use('/users', userRouter)
 app.use('/courses', courseRouter)
 app.use('/auth', authRouter);
 app.use('/lessons', lessonRouter)
-
+app.use('/quiz', quizRouter);
 
 app.get('/', async (req, res) => {
   res.render('index.ejs');
