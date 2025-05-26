@@ -1,6 +1,7 @@
 const User = require('../models/user.js')
 const Lesson = require('../models/lesson.js')
 const Course = require('../models/course.js')
+const mongoose = require('mongoose');
 
 const addLesson = async (req, res) => {
   try {
@@ -81,12 +82,35 @@ const deleteLesson = async (req, res) => {
   }
 }
 
+const markLessonAsComplete = async (req, res) => {
+  try {
+    const lessonId = req.params.id;
+    const userId = req.session.user?._id;
 
+    if (!userId) {
+      return res.redirect('/auth/sign-in');
+    }
+
+    const lessonObjectId = new mongoose.Types.ObjectId(lessonId);
+
+    await User.findByIdAndUpdate(userId, {
+      $addToSet: { completedLessons: lessonObjectId }
+    });
+
+    console.log(`✅ User ${userId} marked lesson ${lessonId} as complete`);
+
+    res.redirect('/users/dashboard');
+  } catch (err) {
+    console.error('❌ Error marking lesson complete:', err.message);
+    res.status(500).send('Error marking lesson as complete.');
+  }
+}
 
 module.exports = {
   addLesson,
   showLesson,
   addLessonAdmin,
   deleteLessonAdmin,
-  deleteLesson
+  deleteLesson,
+  markLessonAsComplete
 }
