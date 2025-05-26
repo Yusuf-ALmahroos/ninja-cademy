@@ -22,4 +22,4 @@ GitHub link: https://github.com/Yusuf-ALmahroos/ninja-cademy.git
 
 Technologies used: Mongoose, Express, Node.js, ejs, Javascript, HTML
 
-Future Enhancements: Progress bar, test forms included at the end of the lesson to assess student completion, ....
+Future Enhancements: Progress bar, adding courses by admin, timer to quiz 
